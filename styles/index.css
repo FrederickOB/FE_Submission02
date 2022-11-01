@@ -1,0 +1,50 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card{
+    width: 33.3%;
+    height: 65%;
+    border: 8px solid gray;
+    padding: 2rem;
+}
+
+.login-header{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap:1rem;
+}
+
+.title{
+    font-size: 3rem;
+    line-height: 1;
+}
+
+img{
+    width: 12rem;
+    height: 12rem;
+}
+
+input,button {
+    width: 100%;
+    height: 4rem;
+    padding:0 1rem 0 1rem;
+    border: 4px solid gray;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    display:block;
+}
+
+input{
+    margin-top: 3rem;
+}
+
+button{
+    margin-top: 4.5rem;
+}
+
+
