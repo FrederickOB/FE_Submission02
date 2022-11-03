@@ -56,3 +56,10 @@ cursor: pointer;
   nav ul li a:hover{
     color: #ff7b00;
   }
+
+  .content_container {
+    width: 80vw;
+    padding: 0 4rem;
+    margin: 2rem 0;
+    margin-left: 10vw;
+  }
