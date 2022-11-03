@@ -1,41 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="/styles/index.css">
-</head>
-<body>
-    <div class="container">
-        <div class="login-card">
-          <div class="login-header">
-            <div class="title">
-              Freddy's Artisanal Halloween Candy Shop
-            </div>
-            <div>
-              <img src="images/Freddys_Logo.svg" alt="logo" />
-            </div>
-          </div>
-          <div>
-           
-              <input
-                type="text"
-                name="username"
-                placeholder="username"
-              />
-              <input
-                type="password"
-                name="password"
-                placeholder="password"
-              />
-        
-            <button >
-              Login
-            </button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/styles/dashboard.css" />
+    <link rel="stylesheet" href="/styles/sideabar.css" />
+    <script src="/js/dashboard.js"></script>
+  </head>
+  <body>
+    <nav class="sidebar">
+      <div class="logo"></div>
+      <ul>
+        <li class="active"><a href="#">Dashboard</a></li>
+        <li><a href="/orders.html">Orders</a></li>
+        <li><a href="/index.html">Logout</a></li>
+      </ul>
+    </nav>
+    <div class="content_container">
+      <h1 class="heading">Dashboard</h1>
+      <div class="stat_cards_container">
+        <div class="stat_card">
+          <p>{duration}</p>
+          <h1>{`$${amount}/ ${orders} orders`}</h1>
+        </div>
+        <div class="stat_card">
+          <p>{duration}</p>
+          <h1>{`$${amount}/ ${orders} orders`}</h1>
+        </div>
+        <div class="stat_card">
+          <p>{duration}</p>
+          <h1>{`$${amount}/ ${orders} orders`}</h1>
+        </div>
+      </div>
+      <div class="revenue_container">
+        <h1 class="heading">Revenue</h1>
+        <div class="toggle">
+          <div class="toggle_container">
+            <label class="switch"
+              ><input type="checkbox" />
+              <div></div>
+            </label>
           </div>
         </div>
       </div>
-</body>
+      <div class="chart_container"></div>
+      <h1 class="heading">Bestseller</h1>
+      <div class="table_container">
+        <div class="">
+          <table class=" ">
+            <tr class=" ">
+              <th class=" "></th>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
