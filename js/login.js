@@ -11,7 +11,6 @@ async function login() {
   const data = await response.json().then((res) => res);
   localStorage.setItem("tokens", JSON.stringify(data));
   autoRedirect();
-  console.log("res", data);
 }
 
 document
@@ -20,23 +19,3 @@ document
     event.preventDefault();
     login();
   });
-
-function logout() {
-  localStorage.removeItem("jwt");
-  window.location.href = "./login.html";
-}
-
-async function isLoggedIn() {
-  const tokensStored = localStorage.getItem("tokens");
-  const tokens = JSON.parse(tokensStored);
-  console.log(tokens);
-  if (!tokens) return false;
-  if (tokens) return true;
-}
-
-async function autoRedirect() {
-  console.log("hello");
-  const validLogin = await isLoggedIn();
-  console.log("validLogin", validLogin);
-  if (validLogin && location.pathname === "/login.html") location.replace("/");
-}
