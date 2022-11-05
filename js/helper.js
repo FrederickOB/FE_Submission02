@@ -30,8 +30,10 @@ async function getNewAccessToken() {
   localStorage.setItem("tokens", JSON.stringify(auth));
 }
 
+logout_element = document.getElementById("logout");
+logout_element.addEventListener("click", logout);
 function logout() {
-  localStorage.removeItem("jwt");
+  localStorage.removeItem("tokens");
   window.location.href = "./login.html";
 }
 

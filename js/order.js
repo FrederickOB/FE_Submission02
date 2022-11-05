@@ -1,13 +1,14 @@
 let search = "";
-let current_page = 1;
+let totalPages;
+let currentPage = 1;
+const next = document.getElementById("next");
+const previous = document.getElementById("previous");
+const current_page_element = document.getElementById("current-page");
+const total_pages_element = document.getElementById("total-pages");
+
 getOrdersData();
 
-async function isLoggedIn() {
-  const tokensStored = localStorage.getItem("tokens");
-  const tokens = JSON.parse(tokensStored);
-  return tokens;
-}
-async function getOrdersData() {
+async function getOrdersData(current_page = 1, search = "") {
   const { access_token } = await isLoggedIn();
   if (access_token) {
     const response = await fetch(
@@ -30,13 +31,18 @@ async function getOrdersData() {
       await getOrdersData();
     }
 
-    const el_current_page = document.getElementById("current-page");
-    const el_total_pages = document.getElementById("total-pages");
-
-    const totalPages = Math.ceil(data.total / data.orders.length);
-    el_current_page.innerHTML = data.page;
-    el_total_pages.innerHTML = totalPages ? totalPages : 1;
+    totalPages = Math.ceil(data.total / data.orders.length);
+    currentPage = data.page;
+    current_page_element.innerHTML = data.page;
+    total_pages_element.innerHTML = totalPages ? totalPages : 1;
     populateTable(data.orders);
+    if (data.page > 1) {
+      previous.classList.remove("hide");
+    }
+
+    if (data.page < totalPages) {
+      next.classList.remove("hide");
+    }
   }
 }
 
@@ -56,4 +62,36 @@ function populateTable(data) {
     });
   }
   tbody.innerHTML = result;
+}
+
+next.addEventListener("click", nextPage);
+function nextPage() {
+  if (currentPage < totalPages) {
+    currentPage = currentPage + 1;
+    current_page_element.innerHTML = currentPage;
+    getOrdersData(currentPage);
+  }
+  if (currentPage === 20) {
+    next.classList.add("hide");
+  }
+}
+
+previous.addEventListener("click", previousPage);
+function previousPage() {
+  if (currentPage > 1) {
+    currentPage = currentPage - 1;
+    current_page_element.innerHTML = currentPage;
+    getOrdersData(currentPage);
+  }
+  if (currentPage === 1) {
+    previous.classList.add("hide");
+  }
+}
+
+document.getElementById("search").addEventListener("submit", getSearch);
+
+function getSearch(e) {
+  e.preventDefault();
+  search = document.getElementById("search_input").value;
+  getOrdersData(currentPage, search);
 }

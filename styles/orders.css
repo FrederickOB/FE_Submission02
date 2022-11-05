@@ -1,7 +1,8 @@
 .table_container {
     border: 2px solid gray;
     width: 100%;
-    height: 70vh;
+    height: 100%;
+    max-height: 70vh;
     padding: 1rem;
     overflow: scroll;
 
@@ -14,7 +15,8 @@
 
   table {
     width: 100%;
-    height: 70vh;
+    height: 100%;
+    max-height: 70vh;
   }
 
   table tr,
@@ -22,7 +24,46 @@
     text-align: left;
     text-transform: capitalize;
   }
+  table thead tr th{
+    font-weight: bold;
+    padding: 0.5rem 0;
+    font-size: large;
+  }
+  table tbody tr td{
+
+    padding: 0.5rem 0;
+
+  }
+
+  .orders_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
 
   .pagination{
     margin-top: 1rem;
   }
+
+  .hide {
+    display: none;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.search{
+  display: flex;
+}
+
+.search img{
+  height: 2rem;
+  width: 2rem;
+}
+
+.search input{
+  margin-left: 1rem;
+  height: 2rem;
+}
