@@ -4,7 +4,7 @@ async function isLoggedIn() {
   return tokens;
 }
 
-async function autoRedirect() {
+async function authRedirect() {
   const validLogin = await isLoggedIn();
   if (!validLogin && location.pathname !== "/login.html") {
     location.replace("/login.html");
