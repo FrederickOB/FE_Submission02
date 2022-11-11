@@ -38,7 +38,7 @@ async function getDashboardData() {
     days_data = days.map((day) => {
       return week[day].total;
     });
-    months_data = days.map((month) => {
+    months_data = months.map((month) => {
       return year[month].total;
     });
 

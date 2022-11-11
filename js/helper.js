@@ -4,7 +4,7 @@ async function isLoggedIn() {
   return tokens;
 }
 
-async function authRedirect() {
+async function autoRedirect() {
   const validLogin = await isLoggedIn();
   if (!validLogin && location.pathname !== "/login.html") {
     location.replace("/login.html");
@@ -32,11 +32,12 @@ async function getNewAccessToken() {
 
 logout_element = document.getElementById("logout");
 logout_element.addEventListener("click", logout);
+
 function logout() {
   localStorage.removeItem("tokens");
   window.location.href = "./login.html";
 }
 
-document.querySelector("body").onload = function () {
-  autoRedirect();
+document.querySelector("body").onload = async function () {
+  await autoRedirect();
 };

@@ -10,7 +10,7 @@ async function login() {
   });
   const data = await response.json().then((res) => res);
   localStorage.setItem("tokens", JSON.stringify(data));
-  autoRedirect();
+  await autoRedirect();
 }
 
 document
